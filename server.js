@@ -2,7 +2,9 @@ const express = require('express')
 const cors = require('cors')
 const registerRouter = require('./routes/registerRouter');
 const loginRouter = require('./routes/loginRouter');
+const profileRouter = require('./routes/profileRouter');
 const db = require('./models');
+const waterintakeRouter = require('./routes/waterintakeRouter');
 
 const app = express()
 
@@ -11,6 +13,8 @@ app.use(express.json());
 
 app.use('/api/register', registerRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/profile', profileRouter)
+app.use('/api/water-intake', waterintakeRouter); 
 
 const PORT = process.env.PORT || 3000;
 
@@ -25,4 +29,5 @@ const PORT = process.env.PORT || 3000;
         console.error('Unable to connect to the database:', error);
     }
 })();
+
 
